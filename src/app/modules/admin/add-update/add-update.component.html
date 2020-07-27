@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Vaka Bilgileri </h1>
+<div mat-dialog-content  [formGroup]="case">
+  <mat-form-field appearance="fill">
+    <mat-label>Tarih</mat-label>
+    <input matInput [matDatepicker]="picker1" formControlName="date" [disabled]="isDisabled()" [min]="minDate" >
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Vaka Sayısı</mat-label>
+    <input matInput type="number" placeholder="Vaka Sayısı" formControlName="cases" min="0">
+    <mat-error >minimum deger 0</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Iyileşen Sayısı</mat-label>
+    <input matInput type="number" placeholder="Iyileşen Sayısı" formControlName="recovered" min="0">
+    <mat-error>minimum deger 0</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Vefat Sayısı</mat-label>
+    <input matInput type="number" placeholder="Vefat Sayısı" formControlName="deaths" min="0">
+    <mat-error >minimum deger 0</mat-error>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button class="btn-success" *ngIf="data.id==null" mat-button (click)="add()">Ekle</button>
+  <button class="btn-warning" *ngIf="data.id!=null" mat-button (click)="update()">Guncelle</button>
+</div>

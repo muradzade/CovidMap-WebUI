@@ -1,0 +1,31 @@
+<header>
+    <!-- <div >
+        <span class="fill-space"></span>
+        <a class="btn btn-light btn-sm " routerLink="/">Anasayfa</a>
+        <a class="btn btn-light btn-sm " *ngIf="buttonControl()==false" routerLink="/login">Giris</a>
+        <a class="btn btn-light btn-sm " *ngIf="buttonControl()==true" (click)="logout()">Cikis</a>
+    </div> -->
+    <div fxLayout="row">
+        <span class="fill-space"></span>
+        <nav class="navbar navbar-expand-lg navbar-light" >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/"><strong>Anasayfa</strong> <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="buttonControl()==true" routerLink="/admin"><strong>Yönetici</strong></a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="buttonControl()==false" routerLink="/login"><strong>Giriş</strong></a>
+                    <a class="nav-link" *ngIf="buttonControl()==true" (click)="logout()"><strong>Çıkış</strong></a>
+                </li>
+              </ul>
+            </div>
+        </nav>        
+    </div>
+
+</header>

@@ -1,0 +1,34 @@
+<div class="container">
+    <div>
+        <button class="btn-primary" mat-raised-button (click)="openDialog()">Ekle</button>
+    </div>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> Tarih </mat-header-cell>
+        <mat-cell *matCellDef="let virusCase"> {{virusCase.date  | date:'dd.MM.yyyy' }}
+          <a fxFlexFill class="mat-row-link" (click)="openDialog(virusCase)"></a> 
+        </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="cases">
+        <mat-header-cell *matHeaderCellDef> Vaka </mat-header-cell>
+        <mat-cell *matCellDef="let virusCase"> {{virusCase.cases}}
+        </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="recovered">
+        <mat-header-cell *matHeaderCellDef> Iyilesen </mat-header-cell>
+        <mat-cell *matCellDef="let virusCase"> {{virusCase.recovered}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="deaths">
+        <mat-header-cell *matHeaderCellDef> Vefat </mat-header-cell>
+        <mat-cell *matCellDef="let virusCase"> {{virusCase.deaths}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="headElements"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: headElements;"></mat-row>
+    </mat-table>
+  </div>
+  

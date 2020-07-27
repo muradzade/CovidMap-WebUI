@@ -1,0 +1,32 @@
+<div class="container">
+  <mat-form-field>
+    <input matInput (keyup)="filterCountry($event)" placeholder="Ulke Ara" >
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Ulke </mat-header-cell>
+      <mat-cell *matCellDef="let country"> {{country.name}}
+        <a fxFlexFill [routerLink]="'/admin/details/'+country.id" class="mat-row-link"></a>  
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalCase">
+      <mat-header-cell *matHeaderCellDef> Toplam Vaka </mat-header-cell>
+      <mat-cell *matCellDef="let country"> {{country.totalCase}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalRecovered">
+      <mat-header-cell *matHeaderCellDef> Iyilesen </mat-header-cell>
+      <mat-cell *matCellDef="let country"> {{country.totalRecovered}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalDeaths">
+      <mat-header-cell *matHeaderCellDef> Vefat </mat-header-cell>
+      <mat-cell *matCellDef="let country"> {{country.totalDeaths}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="headElements"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: headElements;"></mat-row>
+  </mat-table>
+</div>
