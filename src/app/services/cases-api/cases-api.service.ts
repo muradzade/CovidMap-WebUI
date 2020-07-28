@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CasesApiService {
-  apiURL: string="https://localhost:44315/covidMapApi/Cases";
+  apiURL: string="https://localhost:44373/covidMapApi/Cases";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -40,7 +40,7 @@ export class CasesApiService {
     }
   }
   public updateCase(virusCase:VirusCase)
-  {
+  {alert(virusCase.cases)
     if(virusCase)
     {
       return this.httpClient.put(this.apiURL,virusCase,{headers: this.getHeaderForToken() });

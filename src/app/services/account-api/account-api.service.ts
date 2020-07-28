@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AccountApiService {
-  apiURL: string="https://localhost:44315/covidMapApi/Account";
+  apiURL: string="https://localhost:44373/covidMapApi/Account";
 
   constructor(private httpClient: HttpClient) { }
 
