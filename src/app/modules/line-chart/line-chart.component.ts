@@ -3,7 +3,6 @@ import { CasesApiService } from './../../services/cases-api/cases-api.service';
 import { CountryService } from './../../services/shared-data/country.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Country } from 'src/app/models/Country';
-import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-line-chart',
@@ -18,6 +17,7 @@ export class LineChartComponent implements OnInit {
   chartType:string;
   chartData:any;
   charOptions:any;
+
   monthsToNow:string[]=[];
   chart:Chart;
   date:Date;
@@ -102,10 +102,10 @@ export class LineChartComponent implements OnInit {
         this.chartData.datasets[1].data[i]=virusCases[i].recovered;
         this.chartData.datasets[2].data[i]=virusCases[i].deaths;
       }
-      this.chart = new Chart('canvas',{
-      type:"line",
-      data:this.chartData,
-      options:this.charOptions
+      this.chart = new Chart('lineChart',{
+        type:"line",
+        data:this.chartData,
+        options:this.charOptions
       });
 
     })
@@ -128,15 +128,11 @@ export class LineChartComponent implements OnInit {
           this.chartData.datasets[1].data[this.date.getMonth()]+=element.recovered;//datasets[1] =iyilesenler
           this.chartData.datasets[2].data[this.date.getMonth()]+=element.deaths;//datasets[2] =vefatlar
         })
-        //eger country-liset den deger gelmisse bu fonksiyonun icinde 
+        //eger country-list den deger gelmisse bu fonksiyonun icinde 
         //chart data'si guncellenerek bir daha chart kurulmali
         
-        this.charOptions.title.text=this.country.name+" aylık hastalık gelişimi";
-        this.chart=new Chart('canvas',{
-          type:this.chartType,
-          data:this.chartData,
-          options:this.charOptions
-        })
+        this.chart.options.title.text=this.country.name+" aylık hastalık gelişimi";
+        this.chart.update();
       })
 
     })
