@@ -40,7 +40,7 @@ export class CasesApiService {
     }
   }
   public updateCase(virusCase:VirusCase)
-  {alert(virusCase.cases)
+  {
     if(virusCase)
     {
       return this.httpClient.put(this.apiURL,virusCase,{headers: this.getHeaderForToken() });

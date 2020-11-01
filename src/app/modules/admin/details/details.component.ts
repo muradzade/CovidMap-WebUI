@@ -52,7 +52,7 @@ export class DetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      location.reload();
+        location.reload();
     });
   }
 }
