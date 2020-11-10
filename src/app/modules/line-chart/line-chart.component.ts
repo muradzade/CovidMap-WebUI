@@ -24,7 +24,7 @@ export class LineChartComponent implements OnInit {
   countries:Country[]=[];
 
   ngOnInit(): void {
-
+    //chart label hazirlanir
     //sadece simdiki ay a kadar gostersin diye
     let months=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"]
     let newDate = new Date(Date.now());//simdinin tarihi alinir
@@ -103,7 +103,7 @@ export class LineChartComponent implements OnInit {
         this.chartData.datasets[2].data[i]=virusCases[i].deaths;
       }
       this.chart = new Chart('lineChart',{
-        type:"line",
+        type:this.chartType,
         data:this.chartData,
         options:this.charOptions
       });

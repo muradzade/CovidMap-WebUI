@@ -4,10 +4,6 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { MapChart } from 'angular-highcharts';
 import { Country } from 'src/app/models/Country';
 
-var Highcharts = require("highcharts/highmaps.js");
-
-
-
 @Component({
   selector: 'app-world-map',
   templateUrl: './world-map.component.html',
@@ -27,12 +23,7 @@ export class WorldMapComponent implements OnInit {
     let globalDeaths = 0;
     this.casesApi.getAllCases().subscribe(data => {
 
-      data.forEach(element => {
-        this.data.push(element);
-        globalCases += element.totalCase;
-        globalRecovered += element.totalRecovered;
-        globalDeaths += element.totalDeaths;
-      })
+      this.data=data;
        //ayni scope icinde cagirmak icin
       var onClickPoint=(name:string)=>{
         let country = this.data.find(c => c.name === name);
@@ -76,6 +67,7 @@ export class WorldMapComponent implements OnInit {
           }
         },
         colorAxis: {
+
           dataClasses: [
             {
               from: 0,
@@ -88,18 +80,18 @@ export class WorldMapComponent implements OnInit {
             }, {
               from: 101,
               to: 1000,
-              color: "#ff0000"
+              color: "#FF0000"
             }, {
               from: 1001,
               to: 10000,
-              color: "#F880000"
+              color: "#F80000"
             }, {
               from: 10001,
               to: 100000,
-              color: "#b10000"
+              color: "#B10000"
             }, {
               from: 100001,
-              color: "#ff0000"
+              color: "#FF0000"
             },
           ]
         },
